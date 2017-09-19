@@ -11,6 +11,8 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.flaviofaria.kenburnsview.KenBurnsView;
+import com.flaviofaria.kenburnsview.Transition;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -31,6 +33,15 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        KenBurnsView kbv = (KenBurnsView) findViewById(R.id.image);
+        kbv.setTransitionListener(new KenBurnsView.TransitionListener() {
+            @Override
+            public void onTransitionStart(Transition transition) {
+            }
+            @Override
+            public void onTransitionEnd(Transition transition) {
+            }
+        });
 
         ////////LOGINN GOOGLE///
         GoogleSignInOptions go = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
