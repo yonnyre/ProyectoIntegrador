@@ -32,7 +32,6 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         KenBurnsView kbv = (KenBurnsView) findViewById(R.id.image);
         kbv.setTransitionListener(new KenBurnsView.TransitionListener() {
             @Override
