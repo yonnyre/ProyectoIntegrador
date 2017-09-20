@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -23,8 +26,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 public class Login extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleApiClient googleApiClient;
-    private SignInButton signInButton;
-    private LoginButton loginButton;
+    private ImageButton signInButtonGoogle;//Google :V
+    private ImageButton loginButton;
     private CallbackManager callbackManager;
     public static final int ini = 777;
 
@@ -51,8 +54,8 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
                 .addApi(Auth.GOOGLE_SIGN_IN_API, go)
                 .build();
 
-        signInButton = (SignInButton) findViewById(R.id.iniciar);
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        signInButtonGoogle = (ImageButton) findViewById(R.id.iniciar);
+        signInButtonGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View view) {
@@ -66,8 +69,8 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
 
         ////////LOGIN FACEBOOK///
         callbackManager = CallbackManager.Factory.create();
-        loginButton = (LoginButton) findViewById(R.id.loginButton);
-
+        loginButton = (ImageButton) findViewById(R.id.loginButton);
+/*
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -83,7 +86,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
             public void onError(FacebookException error) {
                 Toast.makeText(getApplicationContext(), R.string.error_login, Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
 
@@ -108,7 +111,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         if (res.isSuccess()) {
             goMainScreen();
         } else {
-            Toast.makeText(this, "No se puede iniciar", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No se ha podido iniciar Sesion", Toast.LENGTH_SHORT).show();
         }
     }
     /////google////
@@ -118,5 +121,9 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         startActivity(intent);
     }
 
+    public void omitirLogin(View view){
+        Intent intent2 = new Intent(this,Main2Activity.class);
+        startActivity(intent2);
+    }
 }
 
